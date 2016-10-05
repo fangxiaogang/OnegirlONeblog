@@ -40,19 +40,19 @@ public  class StaggeredAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         mOnItemClickListener = listener;
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        if (!TextUtils.isEmpty(datas.get(position).getUrl())) {
-            return 0;
-        } else {
-            return 1;
-        }
-    }
+//    @Override
+//    public int getItemViewType(int position) {
+//        if (!TextUtils.isEmpty(datas.get(position).getUrl())) {
+//            return 0;
+//        } else {
+//            return 1;
+//        }
+//    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        if(viewType==0){
+
             View view = LayoutInflater.from(mContext
                     ).inflate(R.layout.image_item, parent,
                     false);
@@ -62,12 +62,7 @@ public  class StaggeredAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             view.setOnLongClickListener(this);
 
             return holder;
-        }else{
-            MyViewHolder2 holder2=new MyViewHolder2(LayoutInflater.from(
-                    mContext).inflate(R.layout.page_item, parent,
-                    false));
-            return holder2;
-        }
+
 
     }
 
@@ -75,8 +70,6 @@ public  class StaggeredAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if(holder instanceof MyViewHolder){
             Picasso.with(mContext).load(datas.get(position).getUrl()).into((ImageView) ((MyViewHolder) holder).image);
-        }else if(holder instanceof MyViewHolder2){
-            ((MyViewHolder2) holder).tv.setText(datas.get(position).getPage()+"页");
         }
 
     }
@@ -117,15 +110,6 @@ public  class StaggeredAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             //iv = (ImageButton) view.findViewById(R.id.iv);
         }
     }
-    class MyViewHolder2 extends RecyclerView.ViewHolder
-    {
-        private TextView tv;
 
-        public MyViewHolder2(View view)
-        {
-            super(view);
-            tv = (TextView) view.findViewById(R.id.tv);
-        }
-    }
 
 }

@@ -6,6 +6,15 @@ package com.example.xiaogang.onegirloneblog.Data;
 public class Androidblog {
     private String desc;
     private String url;
+    private int page;
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
 
     public String getDesc() {
         return desc;

@@ -10,12 +10,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.xiaogang.onegirloneblog.Data.TouchImageView;
 import com.example.xiaogang.onegirloneblog.R;
 import com.squareup.picasso.Picasso;
 
 public class ImageActivity extends AppCompatActivity {
     private String url = "url";
-    ImageView imageView;
+    private String desc = "desc";
+    //ImageView imageView;
+    TouchImageView img;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +26,17 @@ public class ImageActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //toolbar.setTitle("查看图片");   用法错误，除非在getactionbar之前设定。
-        getSupportActionBar().setTitle("查看图片");
+        desc = getIntent().getStringExtra(desc);
+        getSupportActionBar().setTitle(desc);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        imageView = (ImageView) findViewById(R.id.image_meizi);
+
+        img = (TouchImageView) findViewById(R.id.image2);
+        img.setMaxZoom(4f);
+
+//      imageView = (ImageView) findViewById(R.id.image_meizi);
         url = getIntent().getStringExtra(url);
-        Picasso.with(this).load(url).into(imageView);
+
+        Picasso.with(this).load(url).into(img);
 
 
 

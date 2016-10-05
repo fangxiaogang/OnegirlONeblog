@@ -8,10 +8,61 @@
     tools:context=".Activity.AboutActivity"
     tools:showIn="@layout/activity_scrolling">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="#eeeeee"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="@string/version_about"
+            android:background="#FFFFFF"
+            android:padding="10dp"
+            android:lineSpacingExtra="6dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="@string/about_xiaogang"
+            android:background="#FFFFFF"
+            android:padding="10dp"
+            android:lineSpacingExtra="6dp"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:text="@string/about_update"
+            android:background="#FFFFFF"
+            android:padding="10dp"
+            android:lineSpacingExtra="6dp"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="@string/about_open"
+            android:background="#FFFFFF"
+            android:padding="10dp"
+            android:lineSpacingExtra="6dp"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="@string/about_thanks"
+            android:background="#FFFFFF"
+            android:padding="10dp"
+            android:lineSpacingExtra="6dp"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

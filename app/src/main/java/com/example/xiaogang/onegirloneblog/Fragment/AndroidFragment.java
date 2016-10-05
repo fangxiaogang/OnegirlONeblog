@@ -37,6 +37,8 @@ public class AndroidFragment extends Fragment {
     private List<Androidblog> androidblogs;
     private AndroidBlogAdapter androidBlogAdapter;
     private List<String> blogs;
+    private int lastVisibleItem;
+    private int page=1;
     public AndroidFragment() {
         // Required empty public constructor
     }
@@ -64,10 +66,35 @@ public class AndroidFragment extends Fragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                //page = 1;
+                page = 1;
                 new GetData().execute("http://gank.io/api/data/Android/10/1");
             }
         });
+
+        //recyclerview滚动监听
+        recyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                //0：当前屏幕停止滚动；1时：屏幕在滚动 且 用户仍在触碰或手指还在屏幕上；2时：随用户的操作，屏幕上产生的惯性滑动；
+                // 滑动状态停止并且剩余少于两个item时，自动加载下一页
+                if (newState == RecyclerView.SCROLL_STATE_IDLE
+                        && lastVisibleItem +1>=linearLayoutManager.getItemCount()) {
+                    new GetData().execute("http://gank.io/api/data/Android/10/"+(++page));
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+//                获取加载的最后一个可见视图在适配器的位置。
+                lastVisibleItem= linearLayoutManager.findLastVisibleItemPosition();
+                //lastVisibleItem = Math.max(positions[0],positions[1]);
+                System.out.println(lastVisibleItem);
+            }
+        });
+
+
     }
     private class GetData extends AsyncTask<String, Integer, String> {
 
@@ -98,9 +125,15 @@ public class AndroidFragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                androidblogs= gson.fromJson(jsonData, new TypeToken<List<Androidblog>>() {}.getType());
 
+                if(androidblogs==null||androidblogs.size()==0){
+                    androidblogs= gson.fromJson(jsonData, new TypeToken<List<Androidblog>>() {}.getType());
 
+                }
+                else{
+                    List<Androidblog> more= gson.fromJson(jsonData, new TypeToken<List<Androidblog>>() {}.getType());
+                     androidblogs.addAll(more);
+                }
                 if(androidBlogAdapter==null){
 
                     recyclerview.setAdapter(androidBlogAdapter = new AndroidBlogAdapter(getActivity(),androidblogs));

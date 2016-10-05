@@ -44,7 +44,7 @@ public class AndroidBlogAdapter extends RecyclerView.Adapter<AndroidBlogAdapter.
                 context.startActivity(intent);
             }
         });
-        System.out.println(datas.get(position).getUrl());
+//        System.out.println(datas.get(position).getUrl());
     }
 
     @Override

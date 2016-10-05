@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -134,14 +135,13 @@ public class Fragmentmeizi extends Fragment {
                     if(meizis==null||meizis.size()==0){
                         meizis= gson.fromJson(jsonData, new TypeToken<List<Meizi>>() {}.getType());
                         Meizi pages=new Meizi();
-                        pages.setPage(page);
-                        meizis.add(pages);
-                    }else{
+
+                    }
+                    else{
                         List<Meizi> more= gson.fromJson(jsonData, new TypeToken<List<Meizi>>() {}.getType());
                         meizis.addAll(more);
-                        Meizi pages=new Meizi();
-                        pages.setPage(page);
-                        meizis.add(pages);
+
+
                     }
 
                     if(mAdapter==null){
@@ -150,9 +150,9 @@ public class Fragmentmeizi extends Fragment {
                             @Override
                             public void onItemClick(View view) {
                                 int position=recyclerview.getChildAdapterPosition(view);
-                                //Toast.makeText(getContext(),"网址为"+meizis.get(position).getUrl(),Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getContext(),ImageActivity.class);
                                 intent.putExtra("url",meizis.get(position).getUrl());
+                                intent.putExtra("desc",meizis.get(position).getDesc());
                                 startActivity(intent);
                             }
 
