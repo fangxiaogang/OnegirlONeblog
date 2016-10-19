@@ -5,35 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".Activity.WebActivity">
+    tools:context="com.example.xiaogang.onegirloneblog.Activity.ZhihuActivity2">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
-        <!--android:fitsSystemWindows="true"-->
-        //上方加入这个属性的话不会遮挡内容但是会toolbar很靠上
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:layout_collapseMode="pin"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            />
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
-
-    <WebView
-        android:id="@+id/web"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp">
+        android:orientation="vertical">
 
-    </WebView>
+    <com.jude.rollviewpager.RollPagerView
+        android:id="@+id/roll_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        app:rollviewpager_play_delay="3000"
+        app:rollviewpager_hint_paddingBottom="8dp"
+        android:padding="7dp"
+        android:layout_marginTop="55dp"
+        />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="2dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical">
 
+    </android.support.v7.widget.RecyclerView>
 
-
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

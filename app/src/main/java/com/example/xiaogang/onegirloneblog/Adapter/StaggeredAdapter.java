@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.xiaogang.onegirloneblog.Data.Meizi;
 import com.example.xiaogang.onegirloneblog.R;
 import com.squareup.picasso.Picasso;
@@ -70,6 +71,8 @@ public  class StaggeredAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if(holder instanceof MyViewHolder){
             Picasso.with(mContext).load(datas.get(position).getUrl()).into((ImageView) ((MyViewHolder) holder).image);
+//          Glide.with(mContext).load(datas.get(position).getUrl()).into((ImageView) ((MyViewHolder) holder).image);
+            
         }
 
     }

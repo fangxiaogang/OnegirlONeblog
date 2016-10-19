@@ -14,7 +14,6 @@ import okhttp3.Response;
 public class Okhttp {
 
     public static OkHttpClient client = new OkHttpClient();
-
     public static String get(String url){
         try {
          client.newBuilder().connectTimeout(10000, TimeUnit.MILLISECONDS);

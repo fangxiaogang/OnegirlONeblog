@@ -13,23 +13,22 @@
     <string name="about">关于</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="large_text">
-        "方立钢找个人练手小项目"\n
-        "版本号：1.1"\n
-        "下版本的升级：加入主流的rxjava rxAndroid retrofit butterknife 等开源库和MVP架构"\n
-        "已加入的开源库：okhttp  gson  picasso  Material Design"\n
-        "感谢开源作者及公司对本项目的支持，感谢开源社区"\n
-        "github地址：https://github.com/fangxiaogang"\n
-        "感谢您的下载或查看，谢谢"\n
     </string>
     <string name="title_activity_image">ImageActivity</string>
-    <string name="version_about">版本号：1.2\n
-                                 本次更新：增加图片手势放大功能 发现更多细节\n
+    <string name="version_about">版本号：1.3\n
+                                 本次更新：加入知乎日报板块 增加图片手势放大功能 发现更多细节 \n
+                                 可以保存图片到图库 修复部分Bug\n
                                  github地址：https://github.com/fangxiaogang</string>
-    <string name="about_xiaogang">方立钢个人练手小项目</string>
-    <string name="about_update">下版本的升级：加入主流的rxjava    rxAndroid    retrofit    butterknife等开源库和MVP架构和缓存机制 </string>
+    <string name="about_xiaogang">方立钢练手小项目</string>
+    <string name="about_update">以后的版本的升级：完全的Material Design 加入主流的Rxjava    RxAndroid    Retrofit    butterknife等开源库和MVP架构及缓存机制 </string>
     <string name="about_open">妹子图和安卓博客的API来自于Gank.io\n
-                              已加入的开源库：okhttp    gson    picasso    Android   Support系列控件\n
-                            感谢开源作者及公司对本项目的支持，感谢开源社区</string>
+                                知乎日报API并非知乎官方提供,如有侵权,本人会立即删除。感谢\n
+                              已加入的开源库：Okhttp    gson    picasso   rollviewpager Android Support系列控件\n
+                              感谢开源,感谢开源社区!!!</string>
     <string name="about_thanks">感谢您的下载或查看，谢谢</string>
+    <string name="save">保存</string>
+    <string name="who">who</string>
+    <string name="title_activity_zhihu2">ZhihuActivity2</string>
+    <string name="zhihu">知乎</string>
 
 </resources>

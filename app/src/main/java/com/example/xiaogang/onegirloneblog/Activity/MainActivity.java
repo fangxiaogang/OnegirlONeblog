@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         viewPager = (ViewPager) findViewById(R.id.viewPager);
        titles = new ArrayList<>();
         titles.add("妹子");
-        titles.add("博客");
+        titles.add("Android");
 
         fragmentList = new ArrayList<>();
         fragmentList.add(new Fragmentmeizi());
@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-//
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -80,7 +79,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_about) {
-           startActivity(new Intent(MainActivity.this,AboutActivity.class));
+           //startActivity(new Intent(MainActivity.this,AboutActivity.class));
+            return true;
+        }
+        if (id == R.id.action_zhihu) {
+            //startActivity(new Intent(MainActivity.this,ZhihuActivity2.class));
             return true;
         }
 
@@ -96,7 +99,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.about) {
             startActivity(new Intent(MainActivity.this,AboutActivity.class));
         }
-
+        if (id == R.id.nav_zhihu) {
+            startActivity(new Intent(MainActivity.this,ZhihuActivity2.class));
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

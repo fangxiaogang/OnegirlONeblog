@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 
 import com.example.xiaogang.onegirloneblog.Activity.ImageActivity;
 import com.example.xiaogang.onegirloneblog.Adapter.StaggeredAdapter;
+import com.example.xiaogang.onegirloneblog.Data.CircularAnim;
 import com.example.xiaogang.onegirloneblog.Data.Meizi;
 import com.example.xiaogang.onegirloneblog.Data.Okhttp;
 import com.example.xiaogang.onegirloneblog.R;
@@ -121,7 +122,6 @@ public class Fragmentmeizi extends Fragment {
             protected void onPostExecute(String result) {
                 super.onPostExecute(result);
                 if(!TextUtils.isEmpty(result)){
-
                     JSONObject jsonObject;
                     Gson gson=new Gson();
                     String jsonData=null;
@@ -134,8 +134,6 @@ public class Fragmentmeizi extends Fragment {
                     }
                     if(meizis==null||meizis.size()==0){
                         meizis= gson.fromJson(jsonData, new TypeToken<List<Meizi>>() {}.getType());
-                        Meizi pages=new Meizi();
-
                     }
                     else{
                         List<Meizi> more= gson.fromJson(jsonData, new TypeToken<List<Meizi>>() {}.getType());
@@ -145,15 +143,24 @@ public class Fragmentmeizi extends Fragment {
                     }
 
                     if(mAdapter==null){
-                        recyclerview.setAdapter(mAdapter = new StaggeredAdapter(getContext(),meizis));
+                        recyclerview.setAdapter(mAdapter = new StaggeredAdapter(getActivity(),meizis));
                         mAdapter.setOnItemClickListener(new StaggeredAdapter.OnRecyclerViewItemClickListener() {
                             @Override
                             public void onItemClick(View view) {
                                 int position=recyclerview.getChildAdapterPosition(view);
-                                Intent intent = new Intent(getContext(),ImageActivity.class);
+                                final Intent intent = new Intent(getContext(),ImageActivity.class);
                                 intent.putExtra("url",meizis.get(position).getUrl());
                                 intent.putExtra("desc",meizis.get(position).getDesc());
-                                startActivity(intent);
+                                CircularAnim.fullActivity(getActivity(), view)
+                                        .colorOrImageRes(R.color.colorPrimary)
+                                        .duration(350)
+                                        .go(new CircularAnim.OnAnimationEndListener() {
+                                            @Override
+                                            public void onAnimationEnd() {
+                                                startActivity(intent);
+                                            }
+                                        });
+
                             }
 
                             @Override

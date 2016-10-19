@@ -35,6 +35,7 @@ public class AndroidBlogAdapter extends RecyclerView.Adapter<AndroidBlogAdapter.
     @Override
     public void onBindViewHolder(AndroidBlogAdapter.ViewHolder holder, final int position) {
         holder.textView.setText(datas.get(position).getDesc());
+        holder.textView2.setText("作者:"+datas.get(position).getWho());
         holder.textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,9 +55,11 @@ public class AndroidBlogAdapter extends RecyclerView.Adapter<AndroidBlogAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
+        TextView textView2;
         public ViewHolder(View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.androidblog_title);
+            textView2 = (TextView) itemView.findViewById(R.id.androidblog_who);
         }
     }
 }
