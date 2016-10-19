@@ -8,3 +8,4 @@
 ![q](https://raw.githubusercontent.com/fangxiaogang/phot/master/4.png)
 ![q](https://raw.githubusercontent.com/fangxiaogang/phot/master/5.png)
 ![q](https://raw.githubusercontent.com/fangxiaogang/phot/master/6.png)
+#加入知乎日报板块，很快更新详细页面
